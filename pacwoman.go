@@ -1,18 +1,26 @@
 package ebiten_pacwoman
 
-
+ 
 
 type PacWoman struct {
 	movement *MovementComponent
-	isDying bool
-	isDead bool
+	isDying  bool
+	isDead   bool
 }
 
+func (p *PacWoman) LoadAnimations() {
+	// runSpriteSheet := []*ebiten.Image {
+	// 	nil,
+	// 	nil,
+	// }
+	// runAnimation := ebiten_extended.NewAnimationSet(runSpriteSheet, 
+	// 												math2D.NewVector2D(20,20),
+	// 												2, 
+	// 												time.Duration.Seconds(0.25 ),
+	// 												true,
+	// 											)
 
-
-
-
-
+}
 
 // #include "PacWoman.hpp"
 // #include <iostream>
@@ -21,10 +29,10 @@ type PacWoman struct {
 // , m_isDying(false)
 // , m_isDead(false)
 // {
-// 	setOrigin(20, 20); 
-	
-// 	m_runAnimator.addFrame(sf::IntRect(0, 32, 40, 40)); 
-//     m_runAnimator.addFrame(sf::IntRect(0, 72, 40, 40)); 
+// 	setOrigin(20, 20);
+
+// 	m_runAnimator.addFrame(sf::IntRect(0, 32, 40, 40));
+//     m_runAnimator.addFrame(sf::IntRect(0, 72, 40, 40));
 
 //     m_dieAnimator.addFrame(sf::IntRect(0, 32, 40, 40));
 //     m_dieAnimator.addFrame(sf::IntRect(0, 72, 40, 40));
@@ -43,14 +51,14 @@ type PacWoman struct {
 // 	{
 // 		m_dieAnimator.play(sf::seconds(1), false);
 // 		m_isDying = true;
-// 	} 
+// 	}
 // }
 
 // void PacWoman::reset()
 // {
 // 	m_isDying = false;
 // 	m_isDead = false;
-	
+
 // 	m_runAnimator.play(sf::seconds(0.25), true);
 // 	m_runAnimator.animate(m_visual);
 // }
@@ -68,7 +76,7 @@ type PacWoman struct {
 // void PacWoman::draw(sf::RenderTarget& target, sf::RenderStates states) const
 // {
 // 	states.transform *= getTransform();
-	
+
 // 	if (!m_isDead)
 // 	target.draw(m_visual, states);
 // }

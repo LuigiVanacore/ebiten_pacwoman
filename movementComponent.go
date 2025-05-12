@@ -7,7 +7,6 @@ import (
 )
 
 type MovementComponent struct {
-	ebiten_extended.Node2D
 	speed                float64
 	previousIntersection math2D.Vector2D
 	availableDirections  [4]bool
@@ -17,9 +16,8 @@ type MovementComponent struct {
 	willMove             bool
 }
 
-func NewMovement(name string, speed float64, hitBox math2D.Rectangle) *MovementComponent {
-	return &MovementComponent{
-		Node2D:               *ebiten_extended.NewNode2D(name),
+func NewMovementComponent(speed float64, hitBox math2D.Rectangle) MovementComponent {
+	return MovementComponent{
 		speed:                speed,
 		currentDirection:     math2D.NewVector2D(1, 0),
 		nextDirection:        math2D.NewVector2D(0, 0),

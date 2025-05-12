@@ -1,6 +1,11 @@
 package ebiten_pacwoman
 
-import "github.com/hajimehoshi/ebiten/v2"
+import (
+	"image"
+
+	"github.com/LuigiVanacore/ebiten_extended"
+	"github.com/hajimehoshi/ebiten/v2"
+)
 
 type Game struct {
 }
@@ -10,11 +15,12 @@ func NewGame() *Game {
 }
 
 func (g *Game) Update() error {
+	ebiten_extended.GameManager().Update()
 	return nil
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
-	// ebiten_extended.GameManager().Draw(screen, &ebiten.DrawImageOptions{})
+	ebiten_extended.GameManager().Draw(screen, &ebiten.DrawImageOptions{})
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
@@ -24,13 +30,15 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
 func (g *Game) loadResources() error {
 	// ebiten_extended.ResourceManager().LoadImage(resources.Aircraft)
 	// ebiten_extended.GameManager().SetIsDebug(true)
+	ebiten_extended.ResourceManager().AddImage(SPRITESHEET, spriteSheet)
+	ebiten_extended.ResourceManager().AddImageFromImage(BANANA_IMAGE, ebiten_extended.ResourceManager().GetImage(SPRITESHEET).SubImage(image.Rect(32, 0, 30, 30)))
+	ebiten_extended.ResourceManager().AddImageFromImage(APPLE_IMAGE, ebiten_extended.ResourceManager().GetImage(SPRITESHEET).SubImage(image.Rect(62, 0, 30, 30)))
+	ebiten_extended.ResourceManager().AddImageFromImage(CHERRY_IMAGE, ebiten_extended.ResourceManager().GetImage(SPRITESHEET).SubImage(image.Rect(92, 0, 30, 30)))
+
 	return nil
 }
 
 
-func (g *Game) Run() {
-	ebiten.SetWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT)
-}
 
 
 // #include "Game.hpp"
@@ -62,6 +70,13 @@ func (g *Game) Run() {
 // 	for (GameState* gameState : m_gameStates)
 // 	delete gameState;
 // }
+
+
+func (g *Game) Run() {
+
+	
+
+}
 
 // void Game::run()
 // {
