@@ -1,4 +1,4 @@
-package ebiten_pacwoman
+package resources
 
 import (
     _ "embed"
